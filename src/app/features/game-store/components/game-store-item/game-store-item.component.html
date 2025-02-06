@@ -1,0 +1,13 @@
+<div class="card">
+    <a [routerLink]="['/store-detail', item.id]">
+        <div class="card-header">
+            <img class="img-center img-fluid rounded shadow-lg" [src]="item.image_background" [alt]="item.name">
+            <h4 class="title">{{item.name}}</h4>
+        </div>
+    </a>
+
+    <div class="card-body">
+        <a href="https://{{item.domain}}" target="_blank">{{item.domain}}</a>
+        <p class="profile-description">{{item.games_count}} juegos</p>
+    </div>
+</div>

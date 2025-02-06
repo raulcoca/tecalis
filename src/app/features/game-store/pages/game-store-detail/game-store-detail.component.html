@@ -1,0 +1,64 @@
+<app-header></app-header>
+<div class="container align-items-center game-store-detail" *ngIf="gameStore$ | async as item">
+    <a routerLink="/" class="btn btn-secondary game-store-detail__detailback" type="button" aria-label="Atrás">
+        <i class="fas fa-chevron-left"></i>
+    </a>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="card ">
+                <div class="card-header">
+                    <img class="img-center img-fluid" [src]="item.image_background" [alt]="item.name ">
+                </div>
+                <div class="card-body">
+                    <h1 class="profile-title text-left">{{ item.name }}</h1>
+                    <a href="https://{{item.domain}}" target="_blank">{{ item.domain }}</a>
+                    <p class="profile-description">{{ item.games_count }} juegos</p>
+
+                    <div class="btn-wrapper profile pt-3">
+                        <a class="btn btn-icon btn-twitter btn-round mr-1"
+                           href="#" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a class="btn btn-icon btn-facebook btn-round mr-1"
+                           href="#" target="_blank">
+                            <i class="fab fa-facebook-square"></i>
+                        </a>
+                        <a class="btn btn-icon btn-dribbble btn-round"
+                           href="#" target="_blank">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-4 ">
+            <div class="profile-description" [innerHTML]="item?.description"></div>
+            <div *ngIf="!item?.description && item?.description != ''">
+                <div class="skeleton-loader">
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                    <div class="skeleton-text"></div>
+                </div>
+            </div>
+            <div *ngIf="!item?.description && item?.description == ''">
+                Aún no hay descripción
+            </div>
+        </div>
+    </div>
+    <div class="row game-store-detail__games">
+        <div class=" col-lg-3 col-md-4 col-sm-6" *ngFor="let game of item.games">
+            <div class="card card-coin card-plain" (click)="showModal(game.id)">
+                <div class="card-body">
+                    <h4  class="title">{{game.name}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,10 @@
+
+<carousel [isAnimated]="true" pauseOnFocus>
+    <slide *ngFor="let src of srcImages" >
+        <img [src]="src" [alt]="src">
+    </slide>
+</carousel>
+
+
+<!--<li data-target="#carouselExampleIndicators"-->
+<!--    *ngFor="let src of srcImages;let i = index" data-slide-to="{{i}}" [ngClass]="{'active': (i==0)}"></li>-->

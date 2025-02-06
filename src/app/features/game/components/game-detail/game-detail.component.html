@@ -1,0 +1,25 @@
+<div class="card game-detail">
+    <!--    <img class="card-img-top" [src]="game.background_image" [alt]="game.name">-->
+    <app-carousel [srcImages]="[game.background_image, game.background_image_additional]"></app-carousel>
+    <div class="card-body">
+        <h4 class="card-title">{{ game.name }}</h4>
+        <p class="card-text " [innerHTML]="game.description | truncate: 300"></p>
+
+        <div class="my-3">
+
+            <div class="text-white content-center">{{ game.rating }}/5</div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar"
+                     [ngStyle]="{'width': (game.rating*2*10) + '%'}"
+                     aria-valuenow="game.rating" aria-valuemin="0" aria-valuemax="5"></div>
+            </div>
+
+        </div>
+        <p class="card-text pull-right ">
+            <small class="text-muted">{{ game.released }}</small>
+        </p>
+    </div>
+
+</div>
+
+
